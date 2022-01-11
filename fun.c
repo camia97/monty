@@ -1,25 +1,34 @@
+#include "monty.h"
 /**
- * split - function that split an argument
- * @argv: file to open
- * Return: the split string
+ *op_push - push to the stack function.
+ *@stack: stack.
+ *@line_number: number of lines value.
  */
-char *split(char *argv)
+void op_push(stack_t **stack, unsigned int line_number)
 {
-	char *token, *line, *op, buffer[];
-	int i = 0, size = 1024, count_line = 0;
+	(void)line_number;
+	stack_t *new_node;
 
-	op = fopen(argv[1], "r");
-	if (!buffer)
-		exit(-1);
-	while (token)
-	{
-		line = getline(&buffer, &size, stdin);
-		buffer[i] = token;
-		token = strtok(line, " ");
-		token = strtok(NULL, " ");
-		i++;
-		count_line++;
+	new_node = malloc(sizeof(stack_t));
+
+	if (!new_node)
+		exit(EXIT_FAILURE);
+	new_node->n = atoi(strtok(NULL, " "));
+	new_node->next = *stack;
+	new_node->prev = NULL;
+	*stack->prev = new_node;
+}
+/**
+ *op_push - push to the stack function.
+ *@stack: stack.
+ *@line_number: number of lines value.
+ */
+void op_pall(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	if (*stack)
+	{	fprintf(stdout, "%d\n", *stack->n);
+		if (*stack->next)
+			op_pall(*stack->next);
 	}
-	close(op);
-	return (buffer);
 }
