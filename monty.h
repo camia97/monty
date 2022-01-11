@@ -1,13 +1,13 @@
 #ifndef _MONTY_H
 #define _MONTY_H
 
-#include "monty.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <stdio.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -19,10 +19,10 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
-} stack_t; 
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
+} stack_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -34,41 +34,32 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t; 
-
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
 /**
- * read_textfile - read a function and prints it to the POSIX.
- * @filename:pointer value.
- * @letters: size of the string.
- * Return:text file.
+ * split - function that split an argument
+ * @argv: file to open
+ * Return: the split string
  */
-
-ssize_t read_textfile(const char *filename, size_t letters)
+char *split(char *argv)
 {
-	int fd;
-	char *buf;
-	int rl;
+	char *token, *line, *op, buffer[];
+	int i = 0, size = 1024, count_line = 0;
 
-	if (filename == NULL)
-		return (0);
-
-	buf = malloc(sizeof(char) * letters)
-
-	if (buf == NULL)
-		return (0);
-
-	fd = open(filename, O_RDONLY, 0600);
-
-	if (fd == -1)
-		return (0);
-
-	rl = read(fd, buf, letters);
-	write(STDOUT_FILENO, buf, rl);
-
-	close(fd);
-	free(buf);
-	return (rl);
+	op = open(argv[1], O_READONLY);
+	if (!buffer)
+		exit(-1);
+	while (token)
+	{
+		line = getline(&buffer, &size, stdin);
+		buffer[i] = token;
+		token = strtok(line, " ");
+		token = strtok(NULL, " ");
+		i++;
+		count_line++;
+	}
+	close(op);
+	return (buffer);
 }
 #endif
