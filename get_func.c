@@ -8,11 +8,11 @@ instruction_t fstruct(int i)
 {
         instruction_t artype[] = {
                 {"push", op_push},
-                {"pop", op_pop},
+                {"pall", op_pall},
+               /* {"pop", op_pop},
                 {"pint", op_pint},
                 {"swap", op_swap},
-                {"pall", op_pall},
-                {"nop", op_nop},
+                {"nop", op_nop},*/
                 {NULL,NULL}
         };
         return (artype[i])
@@ -24,6 +24,8 @@ instruction_t fstruct(int i)
  */
 void get_func(char *token, char **stack, unsigned int line_number)
 {
+	int i = 0;
+
 	while (fstruct[i].opcode)
 	{
 		if (token == fstruct[i].opcode)
