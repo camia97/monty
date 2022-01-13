@@ -10,7 +10,7 @@ void op_push(stack_t **stack, unsigned int line_n)
 	char *val;
 
 	val = strtok(NULL, " ");
-	if (atoi_comp(val) == 0)
+	if (!val || atoi_comp(val) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_n);
 		exit(EXIT_FAILURE);
@@ -75,20 +75,19 @@ void op_nop(stack_t **stack, unsigned int line_n)
  */
 void op_pop(stack_t **stack, unsigned int line_n)
 {
-	stack_t *tmp = *stack;
 
-	if (!tmp)
+	if (!(*stack))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_n);
 		exit(EXIT_FAILURE);
 	}
-	if (!tmp->prev)
+	if (!(*stack)->next)
 	{
-		tmp = NULL;
-		free(tmp);
+		free(*stack);
+		(*stack) = NULL;
 		return;
 	}
-	tmp = tmp->next;
-	free(tmp);
-	tmp = NULL;
+	(*stack) = (*stack)->next;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
