@@ -12,7 +12,7 @@ void op_push(stack_t **stack, unsigned int line_n)
 	val = strtok(NULL, " ");
 	if (!val || atoi_comp(val) == 0)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_n);
+		fprintf(stderr, "L%u: usage: push integer\n", line_n);
 		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(stack_t));
@@ -53,7 +53,7 @@ void op_pall(stack_t **stack, unsigned int line_n)
 void op_pint(stack_t **stack, unsigned int line_n)
 {
 	if (!*stack)
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_n);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_n);
 
 	fprintf(stdout, "%d\n", (*stack)->n);
 }
@@ -78,7 +78,7 @@ void op_pop(stack_t **stack, unsigned int line_n)
 
 	if (!(*stack))
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_n);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_n);
 		exit(EXIT_FAILURE);
 	}
 	if (!(*stack)->next)
