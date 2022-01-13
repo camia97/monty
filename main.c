@@ -18,9 +18,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	op = fopen(argv[1], "r");
-
 	if (!op)
 	{
 		fprintf(stderr, "Error: Can't open file <argv[1]>");
@@ -31,14 +29,12 @@ int main(int argc, char **argv)
 		token = strtok(buffer, " ");
 		if (token[0] == '#')
 		{
-			free(buffer);
-			buffer = NULL;
+			free(buffer), buffer = NULL;
 			continue;
 		}
 		if (token[0] == '\n')
 		{
-			free(buffer);
-			buffer = NULL;
+			free(buffer), buffer = NULL;
 			continue;
 		}
 		get_func(token, count_line, &sta);
