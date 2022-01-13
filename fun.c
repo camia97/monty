@@ -58,3 +58,14 @@ void op_pint(stack_t **stack, unsigned int line_n)
 
 	fprintf(stdout, "%d\n", (*stack)->n);
 }
+/**
+ * op_nop - nop function.
+ * @stack:stack.
+ * @line_n:line number.
+ * Return: void.
+ */
+void op_nop(stack_t **stack, unsigned int line_n)
+{
+	(void)stack;
+	(void)line_n;
+}
