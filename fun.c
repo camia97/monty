@@ -11,12 +11,12 @@ void op_push(stack_t **stack, unsigned int line_n)
 	(void)line_n;
 
 	val = strtok(NULL, " ");
+	printf("%s\n", val);
 	if (atoi_comp(val) == 1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_n);
 		exit(EXIT_FAILURE);
 	}
-	printf("executing push\nvalue: %s", val);
 	new_node = malloc(sizeof(stack_t));
 
 	if (!new_node)
@@ -40,7 +40,6 @@ void op_pall(stack_t **stack, unsigned int line_n)
 	stack_t *tmp = *stack;
 	(void)line_n;
 
-	printf("executing pall\n");
 	while (tmp && (tmp)->next)
 	{	fprintf(stdout, "%d\n", (tmp)->n);
 		tmp = (tmp)->next;
@@ -54,7 +53,6 @@ void op_pall(stack_t **stack, unsigned int line_n)
  */
 void op_pint(stack_t **stack, unsigned int line_n)
 {
-	printf("executing pint\n");
 	if (!*stack)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_n);
 

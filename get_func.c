@@ -35,8 +35,9 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	}
 }
 /**
- *
- *
+ * atoi_comp - compares atoi.
+ * @str: str value.
+ * Return: flag.
  */
 int atoi_comp(char *str)
 {
