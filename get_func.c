@@ -40,14 +40,19 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
  * @str: str value.
  * Return: flag.
  */
-int atoi_comp(char *str)
+int atoi_comp(char *str, unsigned int line_n)
 {
 	int flag = 0, i = 0;
 
+	if (str[i] == 45)
+		i++;
+	if (!str[i])
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_n);
+		exit(EXIT_FAILURE);
+	}
 	while (str[i])
 	{
-		if (str[i] == 45)
-			continue;
 		if (str[i] >= 48 && str[i] <= 57)
 			flag = 0;
 		else

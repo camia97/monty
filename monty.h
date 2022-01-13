@@ -43,7 +43,7 @@ void get_func(char *token, unsigned int line_n, stack_t **sta);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 int read_files(FILE *op, stack_t **sta);
 void op_pint(stack_t **stack, unsigned int line_n);
-int atoi_comp(char *str);
+int atoi_comp(char *str, unsigned int line_n);
 void op_nop(stack_t **stack, unsigned int line_n);
 void free_stack(stack_t **stack);
 void op_pop(stack_t **stack, unsigned int line_n);
