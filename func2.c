@@ -32,6 +32,6 @@ void op_add(stack_t **stack, unsigned int line_n)
 
 	sum = (*stack)->n + (*stack)->next->n;
 	(*stack)->next->n = sum;
-	op_pop(&stack, line_n);
+	op_pop(stack, line_n);
 
 }
