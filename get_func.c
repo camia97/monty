@@ -22,9 +22,7 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	{
 		if (strcmp(artype[i].opcode, token))
 		{
-			printf("encontre el %s\n", token);
-			artype[i].f(sta, line_n); /* No esta corriendo esta linea... carajo  (D':{)  */
-			printf("llame a la funcion\n");
+			artype[i].f(sta, line_n);
 			break;
 		}
 		i++;
