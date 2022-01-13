@@ -6,7 +6,7 @@
  */
 void op_swap(stack_t **stack, unsigned int line_n)
 {
-	int aux;
+	int aux = 0;
 
 	if (*stack)
 	{
