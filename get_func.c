@@ -31,7 +31,7 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	if (!artype[i].opcode)
 	{
 		free_stack(sta);
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_n, artype[i].opcode);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_n, token);
 		exit(EXIT_FAILURE);
 	}
 }
