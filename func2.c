@@ -8,20 +8,14 @@ void op_swap(stack_t **stack, unsigned int line_n)
 {
 	int aux = 0;
 
-	if (*stack)
+	if (!(*stack) || !(*stack)->next)
 	{
-		if (!(*stack)->next)
-		{
-			fprintf(stderr, "L%u: can't swap, stack too short\n", line_n);
-			exit(EXIT_FAILURE);
-		}
-		aux = (*stack)->n;
-		(*stack)->n = (*stack)->next->n;
-		(*stack)->next->n = aux;
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_n);
+		exit(EXIT_FAILURE);
 	}
-	fprintf(stderr, "L%u: can't swap, stack too short\n", line_n);
-	exit(EXIT_FAILURE);
-
+	aux = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = aux;
 }
 /**
  * op_add - add two nodes.
@@ -32,7 +26,7 @@ void op_add(stack_t **stack, unsigned int line_n)
 {
 	int sum = 0;
 
-	if (!(*stack)->prev && !(*stack)->next)
+	if (!(*stack) || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
@@ -52,7 +46,7 @@ void op_sub(stack_t **stack, unsigned int line_n)
 {
 	int sub = 0;
 
-	if (!(*stack)->prev && !(*stack)->next)
+	if (!(*stack) || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
