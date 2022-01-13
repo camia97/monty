@@ -29,6 +29,12 @@ int main(int argc, char **argv)
 	while (getline(&buffer, &size, op) != -1)
 	{
 		token = strtok(buffer, " ");
+		if (token[0] == '#')
+		{
+			free(buffer);
+			buffer = NULL;
+			continue;
+		}
 		get_func(token, count_line, &sta);
 		count_line++;
 		free(buffer);
