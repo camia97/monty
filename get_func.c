@@ -22,10 +22,13 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	};
 	while (artype[i].opcode)
 	{
-		if (strncmp(artype[i].opcode, token, (strlen(token) - 1)) == 0)
+		if (strncmp(token, artype[i].opcode, (strlen(token) - 1)) == 0)
 		{
-			artype[i].f(sta, line_n);
-			break;
+			if (strlen(token) == strlen(artype[i].opcode))
+			{
+				artype[i].f(sta, line_n);
+				break;
+			}
 		}
 		i++;
 	}
