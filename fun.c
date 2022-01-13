@@ -39,7 +39,6 @@ void op_push(stack_t **stack, unsigned int line_n)
  */
 void op_pall(stack_t **stack, unsigned int line_n)
 {
-	int i = 0;
 	stack_t *tmp = *stack;
 	(void)line_n;
 
@@ -47,7 +46,6 @@ void op_pall(stack_t **stack, unsigned int line_n)
 	{
 		fprintf(stdout, "%d\n", (tmp)->n);
 		tmp = (tmp)->next;
-		i++;
 	}
 }
 /**
