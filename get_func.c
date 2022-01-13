@@ -12,7 +12,7 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	instruction_t artype[] = {
 	{"push", op_push},
 	{"pall", op_pall},
-	{"pint", op_pint},	
+	{"pint", op_pint},
 	/*{"pop", op_pop},
 	{"swap", op_swap},
 	{"nop", op_nop},*/
@@ -20,8 +20,9 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	};
 	while (artype[i].opcode)
 	{
-		if (strcmp(artype[i].opcode, token))
+		if (strncmp(artype[i].opcode, token, (strlen(token) - 1)) == 0)
 		{
+			printf("found it token: %s - %s\n", token, artype[i].opcode);
 			artype[i].f(sta, line_n);
 			break;
 		}
@@ -32,4 +33,25 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 		fprintf(stderr, "L%u: unknown instruction %s\n", line_n, artype[i].opcode);
 		exit(EXIT_FAILURE);
 	}
+}
+/**
+ *
+ *
+ */
+int atoi_comp(char *str)
+{
+	int flag = 0, i = 0;
+
+	while (str[i])
+	{
+		if (str[i] >= 48 && str[i] <= 57)
+			flag = 0;
+		else
+		{
+			flag = 1;
+			break;
+		}
+		i++;
+	}
+	return (flag);
 }

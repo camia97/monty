@@ -43,4 +43,5 @@ void get_func(char *token, unsigned int line_n, stack_t **sta);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 int read_files(FILE *op, stack_t **sta);
 void op_pint(stack_t **stack, unsigned int line_n);
+int atoi_comp(char *str);
 #endif
