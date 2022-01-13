@@ -20,3 +20,18 @@ void op_swap(stack_t **stack, unsigned int line_n)
 		(*stack)->next->n = aux;
 	}
 }
+void op_add(stack_t **stack, unsigned int line_n)
+{
+	int sum = 0;
+
+	if (!(*stack)->prev && !(*stack)->next)
+	{
+		fprintf(stderr, "L %d: can't add, stack too short\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+
+	sum = (*stack)->n + (*stack)->next->n;
+	(*stack)->next->n = sum;
+	op_pop(&stack, line_n);
+
+}
