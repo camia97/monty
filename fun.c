@@ -39,3 +39,14 @@ void op_pall(stack_t **stack, unsigned int line_n)
 		i++;
 	}
 }
+/**
+ * op_pint - print int.
+ * @stack: stack.
+ * @line_n: line number.
+ */
+void op_pint(stack_t **stack, unsigned int line_n)
+{
+	fprintf(stdout, "%d\n", (*stack)->n);
+	if (!*stack)
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_n);
+}

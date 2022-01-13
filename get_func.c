@@ -12,8 +12,8 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	instruction_t artype[] = {
 	{"push", op_push},
 	{"pall", op_pall},
+	{"pint", op_pint},	
 	/*{"pop", op_pop},
-	{"pint", op_pint},
 	{"swap", op_swap},
 	{"nop", op_nop},*/
 	{NULL, NULL}
