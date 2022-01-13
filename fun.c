@@ -10,7 +10,7 @@ void op_push(stack_t **stack, unsigned int line_n)
 	char *val;
 
 	val = strtok(NULL, " ");
-	if (!val || atoi_comp(val, line_n) == 0)
+	if (!val || atoi_comp(val, line_n) == 1)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_n);
 		free_stack(stack);
