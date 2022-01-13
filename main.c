@@ -29,12 +29,12 @@ int main(int argc, char **argv)
 		token = strtok(buffer, " ");
 		if (token[0] == '#')
 		{
-			free(buffer), buffer = NULL;
+			free(buffer), buffer = NULL, count_line++;
 			continue;
 		}
 		if (token[0] == '\n')
 		{
-			free(buffer), buffer = NULL;
+			free(buffer), buffer = NULL, count_line++;
 			continue;
 		}
 		get_func(token, count_line, &sta);
