@@ -55,3 +55,26 @@ int atoi_comp(char *str)
 	}
 	return (flag);
 }
+/**
+ *
+ *
+ *
+ */
+void free_stack(stack_t **stack)
+{
+	stack_t *tmp = *stack;
+	
+	while (tmp)
+	{
+		if (!tmp->next)
+		{
+			free(tmp);
+			tmp = NULL;
+		}
+		else
+		{
+			tmp = tmp->next;
+			free(tmp->prev);
+		}
+	}
+}

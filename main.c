@@ -34,6 +34,8 @@ int main(int argc, char **argv)
 		free(buffer);
 		buffer = NULL;
 	}
+	free(buffer);
+	free_stack(&sta);
 	fclose(op);
 	return (0);
 }
