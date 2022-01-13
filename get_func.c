@@ -46,6 +46,8 @@ int atoi_comp(char *str)
 
 	while (str[i])
 	{
+		if (str[i] == 45)
+			continue;
 		if (str[i] >= 48 && str[i] <= 57)
 			flag = 0;
 		else
