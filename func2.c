@@ -51,7 +51,7 @@ void op_sub(stack_t **stack, unsigned int line_n)
 
 	if (!(*stack)->prev && !(*stack)->next)
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", line_n);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
 	}
 	sub = (*stack)->next->n - (*stack)->n;
