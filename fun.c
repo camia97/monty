@@ -11,8 +11,7 @@ void op_push(stack_t **stack, unsigned int line_n)
 	(void)line_n;
 
 	val = strtok(NULL, " ");
-	printf("%s\n", val);
-	if (atoi_comp(val) == 1)
+	if (atoi_comp(val) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_n);
 		exit(EXIT_FAILURE);
@@ -40,8 +39,9 @@ void op_pall(stack_t **stack, unsigned int line_n)
 	stack_t *tmp = *stack;
 	(void)line_n;
 
-	while (tmp && (tmp)->next)
-	{	fprintf(stdout, "%d\n", (tmp)->n);
+	while (tmp)
+	{
+		fprintf(stdout, "%d\n", (tmp)->n);
 		tmp = (tmp)->next;
 		i++;
 	}

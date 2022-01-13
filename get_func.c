@@ -22,7 +22,6 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	{
 		if (strncmp(artype[i].opcode, token, (strlen(token) - 1)) == 0)
 		{
-			printf("found it token: %s - %s\n", token, artype[i].opcode);
 			artype[i].f(sta, line_n);
 			break;
 		}
