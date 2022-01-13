@@ -20,6 +20,11 @@ void op_swap(stack_t **stack, unsigned int line_n)
 		(*stack)->next->n = aux;
 	}
 }
+/**
+ * op_add - add two nodes.
+ * @stack: stack.
+ * @line_n: line number.
+ */
 void op_add(stack_t **stack, unsigned int line_n)
 {
 	int sum = 0;
