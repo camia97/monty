@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 	}
 	while (getline(&buffer, &size, op) != -1)
 	{
+		if (buffer[len(buffer) - 1] == '\n')
+			buffer[len(buffer) - 1] = '\0';
 		token = strtok(buffer, " ");
 		if (token[0] == '#')
 		{
@@ -37,13 +39,11 @@ int main(int argc, char **argv)
 			free(buffer), buffer = NULL, count_line++;
 			continue;
 		}
-		get_func(token, count_line, &sta);
-		count_line++;
+		get_func(token, count_line, &sta), count_line++;
 		free(buffer);
 		buffer = NULL;
 	}
-	free(buffer);
-	free_stack(&sta);
+	free(buffer), free_stack(&sta);
 	fclose(op);
 	return (0);
 }
