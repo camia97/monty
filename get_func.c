@@ -15,9 +15,7 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	{"pint", op_pint},
 	{"nop", op_nop},
 	{"pop", op_pop},
-	/*
-	 *{"swap", op_swap},
-	 */
+	{"swap", op_swap},
 	{NULL, NULL}
 	};
 	while (artype[i].opcode)
