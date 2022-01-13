@@ -1,23 +1,38 @@
 #include "monty.h"
+/**
+ * main - main function.
+ * @argc: argument counter.
+ * @argv: argument vector.
+ * Return: main.
+ */
 int main(int argc, char **argv)
 {
 	FILE *op;
-	char *token, *line, buffer[];
-	int i = 0, size = 1024, count_line = 0;
+	char *token, *buffer = NULL;
+	int count_line = 1;
+	size_t size = 1024;
+	stack_t *sta = NULL;
+	/* static char *hola;*/
 
 	op = fopen(argv[1], "r");
-
-	if (argc != 2)
+	if (!op)
 	{
-		fprintf(stderr, "USAGE: monty file\n", errno);
+		fprintf(stderr, "Error: Can't open file <argv[1]>");
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&buffer, &size, stdin) != -1)
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	while (getline(&buffer, &size, op) != -1)
 	{
 		token = strtok(buffer, " ");
-		get_func(token);
-		i++;
+		get_func(token, count_line, &sta);
 		count_line++;
+		free(buffer);
+		buffer = NULL;
 	}
-	close(op);
+	fclose(op);
+	return (0);
 }

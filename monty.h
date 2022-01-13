@@ -35,9 +35,10 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_n);
 } instruction_t;
-void op_push(stack_t **stack, unsigned int line_number);
-void op_pall(stack_t **stack, unsigned int line_number);
-void get_func(char *token, char **stack, unsigned int line_number);
+void op_push(stack_t **stack, unsigned int line_n);
+void op_pall(stack_t **stack, unsigned int line_n);
+void get_func(char *token, unsigned int line_n, stack_t **sta);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 #endif

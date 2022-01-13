@@ -1,40 +1,37 @@
 #include "monty.h"
 /**
- * instruction_t - instruction struct
- * @i: int pos the struct
- * Return: struct
+ * get_func - obtain the instruction in the struct.
+ * @token: token.
+ * @sta: stack.
+ * @line_n: numbers of lines.
  */
-instruction_t fstruct(int i)
-{
-        instruction_t artype[] = {
-                {"push", op_push},
-                {"pall", op_pall},
-               /* {"pop", op_pop},
-                {"pint", op_pint},
-                {"swap", op_swap},
-                {"nop", op_nop},*/
-                {NULL,NULL}
-        };
-        return (artype[i])
-}
-/**
- *
- *
- *
- */
-void get_func(char *token, char **stack, unsigned int line_number)
+void get_func(char *token, unsigned int line_n, stack_t **sta)
 {
 	int i = 0;
 
-	while (fstruct[i].opcode)
+	instruction_t artype[] = {
+	{"push", op_push},
+	{"pall", op_pall},
+	/*{"pop", op_pop},
+	{"pint", op_pint},
+	{"swap", op_swap},
+	{"nop", op_nop},*/
+	{NULL, NULL}
+	};
+	while (artype[i].opcode)
 	{
-		if (token == fstruct[i].opcode)
-			fstruct[i].f(stack, line_number);
+		if (strcmp(artype[i].opcode, token))
+		{
+			printf("encontre el %s\n", token);
+			artype[i].f(sta, line_n); /* No esta corriendo esta linea... carajo  (D':{)  */
+			printf("llame a la funcion\n");
+			break;
+		}
 		i++;
 	}
-	if (!fstruct[i].opcode)
+	if (!artype[i].opcode)
 	{
-		fprintf(stderr, "L<line_number>: unknown instruction <opcode>\n");
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_n, artype[i].opcode);
 		exit(EXIT_FAILURE);
 	}
 }
