@@ -49,4 +49,5 @@ void free_stack(stack_t **stack);
 void op_pop(stack_t **stack, unsigned int line_n);
 void op_swap(stack_t **stack, unsigned int line_n);
 void op_add(stack_t **stack, unsigned int line_n);
+void op_sub(stack_t **stack, unsigned int line_n);
 #endif
