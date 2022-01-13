@@ -14,9 +14,9 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	{"pall", op_pall},
 	{"pint", op_pint},
 	{"nop", op_nop},
+	{"pop", op_pop},
 	/*
-	 * {"pop", op_pop},
-	 * {"swap", op_swap},
+	 *{"swap", op_swap},
 	 */
 	{NULL, NULL}
 	};

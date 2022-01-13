@@ -8,7 +8,6 @@ void op_push(stack_t **stack, unsigned int line_n)
 {
 	stack_t *new_node;
 	char *val;
-	(void)line_n;
 
 	val = strtok(NULL, " ");
 	if (atoi_comp(val) == 0)
@@ -68,4 +67,28 @@ void op_nop(stack_t **stack, unsigned int line_n)
 {
 	(void)stack;
 	(void)line_n;
+}
+/**
+ * op_pop - delete first node
+ * @stack: stack
+ * @line_n: number of lines
+ */
+void op_pop(stack_t **stack, unsigned int line_n)
+{
+	stack_t *tmp = *stack;
+
+	if (!tmp)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+	if (!tmp->prev)
+	{
+		tmp = NULL;
+		free(tmp);
+		return;
+	}
+	tmp = tmp->next;
+	free(tmp);
+	tmp = NULL;
 }

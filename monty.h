@@ -46,4 +46,5 @@ void op_pint(stack_t **stack, unsigned int line_n);
 int atoi_comp(char *str);
 void op_nop(stack_t **stack, unsigned int line_n);
 void free_stack(stack_t **stack);
+void op_pop(stack_t **stack, unsigned int line_n);
 #endif
