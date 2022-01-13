@@ -26,8 +26,8 @@ int main(int argc, char **argv)
 	}
 	while (getline(&buffer, &size, op) != -1)
 	{
-		if (buffer[len(buffer) - 1] == '\n')
-			buffer[len(buffer) - 1] = '\0';
+		if (buffer[strlen(buffer) - 1] == '\n')
+			buffer[strlen(buffer) - 1] = '\0';
 		token = strtok(buffer, " ");
 		if (token[0] == '#')
 		{
