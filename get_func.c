@@ -14,8 +14,10 @@ void get_func(char *token, unsigned int line_n, stack_t **sta)
 	{"pall", op_pall},
 	{"pint", op_pint},
 	{"nop", op_nop},
-	/*{"pop", op_pop},
-	{"swap", op_swap},*/
+	/*
+	 * {"pop", op_pop},
+	 * {"swap", op_swap},
+	 */
 	{NULL, NULL}
 	};
 	while (artype[i].opcode)
@@ -56,14 +58,13 @@ int atoi_comp(char *str)
 	return (flag);
 }
 /**
- *
- *
- *
+ * free_stack - free the stack
+ * @stack: stack
  */
 void free_stack(stack_t **stack)
 {
 	stack_t *tmp = *stack;
-	
+
 	while (tmp)
 	{
 		if (!tmp->next)

@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 	}
 
 	op = fopen(argv[1], "r");
-	
+
 	if (!op)
 	{
 		fprintf(stderr, "Error: Can't open file <argv[1]>");
