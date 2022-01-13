@@ -19,6 +19,9 @@ void op_swap(stack_t **stack, unsigned int line_n)
 		(*stack)->n = (*stack)->next->n;
 		(*stack)->next->n = aux;
 	}
+	fprintf(stderr, "L%u: can't swap, stack too short\n", line_n);
+	exit(EXIT_FAILURE);
+
 }
 /**
  * op_add - add two nodes.
