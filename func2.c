@@ -64,7 +64,7 @@ void op_div(stack_t **stack, unsigned int line_n)
 {
 	int div;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (!(*stack) || !(*stack)->next)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
@@ -73,7 +73,7 @@ void op_div(stack_t **stack, unsigned int line_n)
 
 	if (div == 0)
 	{
-		fprintf(stderr, "L%u: division by zero\n", line_n);
+		printf("L%u: division by zero\n", line_n);
 		exit(EXIT_FAILURE);
 	}
 	op_pop(stack, line_n);
@@ -88,9 +88,9 @@ void op_mul(stack_t **stack, unsigned int line_n)
 {
 	int mul;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (!(*stack) || (*stack)->next)
 	{
-		fprintf(stderr, "L%u: can't mul, stack too short\n", line_n);
+		printf("L%u: can't mul, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
 	}
 
