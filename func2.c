@@ -62,7 +62,7 @@ void op_sub(stack_t **stack, unsigned int line_n)
  */
 void op_div(stack_t **stack, unsigned int line_n)
 {
-	int div;
+	int div = 0;
 
 	if (!(*stack) || !(*stack)->next)
 	{
@@ -86,9 +86,9 @@ void op_div(stack_t **stack, unsigned int line_n)
  */
 void op_mul(stack_t **stack, unsigned int line_n)
 {
-	int mul;
+	int mul = 0;
 
-	if (!(*stack) || (*stack)->next)
+	if (!(*stack) || !(*stack)->next)
 	{
 		printf("L%u: can't mul, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
