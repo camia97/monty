@@ -94,8 +94,8 @@ void op_mul(stack_t **stack, unsigned int line_n)
 		exit(EXIT_FAILURE);
 	}
 
-	mul = (*stack)->n;
+	mul = (*stack)->n * (*stack)->next->n;
+	(*stack)->next->n = mul;
 	op_pop(stack, line_n);
-	(*stack)->n *= mul;
 
 }
