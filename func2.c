@@ -64,7 +64,7 @@ void op_div(stack_t **stack, unsigned int line_n)
 {
 	int div;
 
-	if (!(*stack) || !(*stack)->next)
+	if (*stack == NULL) || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
@@ -88,7 +88,7 @@ void op_mul(stack_t **stack, unsigned int line_n)
 {
 	int mul;
 
-	if (!(*stack) || !(*stack)->next)
+	if (*stack == NULL) || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", line_n);
 		exit(EXIT_FAILURE);
