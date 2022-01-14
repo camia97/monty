@@ -86,7 +86,7 @@ void op_div(stack_t **stack, unsigned int line_n)
  */
 void op_mul(stack_t **stack, unsigned int line_n)
 {
-	int mul;
+	int mul = 0;
 
 	if (!(*stack) || (*stack)->next)
 	{
