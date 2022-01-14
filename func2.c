@@ -76,8 +76,9 @@ void op_div(stack_t **stack, unsigned int line_n)
 		printf("L%u: division by zero\n", line_n);
 		exit(EXIT_FAILURE);
 	}
+	div = (*stack)->n / (*stack)->next->n;
+	(*stack)->next->n = div;
 	op_pop(stack, line_n);
-	(*stack)->n /= div;
 }
 /**
  * op_mul - multiplies  two elements of the node.
