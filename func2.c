@@ -55,3 +55,47 @@ void op_sub(stack_t **stack, unsigned int line_n)
 	(*stack)->next->n = sub;
 	op_pop(stack, line_n);
 }
+/**
+ * op_div - divide two elements.
+ * @stack: stack.
+ * @line_n:numbers of lines.
+ */
+void op_div(stack_t **stack, unsigned int line_n)
+{
+	int div;
+
+	if (!(*stack) || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+	div = (*stack)->n;
+
+	if (div == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+	op_pop(stack, line_n);
+	(*stack)->n /= div;
+}
+/**
+ * op_mul - multiplies  two elements of the node.
+ * @stack: stack.
+ * @line_n: line number.
+ */
+void op_mul(stack_t **stack, unsigned int line_n)
+{
+	int mul;
+
+	if (!(*stack) || !(*stack)->next)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_n);
+		exit(EXIT_FAILURE);
+	}
+
+	mul = (*stack)->n;
+	op_pop(stack, line_n);
+	(*stack)->n *= mul;
+
+}
